@@ -1,4 +1,51 @@
-// 1. brute ? O(N^2) : O(1)
+/*
+A pair ('ARR[i]', 'ARR[j]') is said to be an inversion when:
+1. 'ARR[i] > 'ARR[j]' 
+2. 'i' < 'j'
+*/
+
+// // 1. brute ? O(N^2) : O(1)
+// #include<iostream>
+// #include<vector>
+// using namespace std;
+
+// void printVec(vector<int> nums){
+
+// 	for(auto ele: nums) cout<<ele<<" ";
+// 	cout<<endl;
+// }
+
+// int getInversionCount(vector<int> nums, int n){
+
+// 	int count = 0;
+
+// 	for(int i=0; i<n-1; i++){
+
+// 		for(int j=i+1; j<n; j++){
+
+// 			if(nums[j] < nums[i]) count++;
+// 		}
+// 	}
+
+// 	return count;
+// }
+
+// int main(){
+
+// 	vector<int> nums = {1, 6, 20, 4, 5}; 
+// 	int n = nums.size();
+
+// 	printVec(nums);
+
+// 	int count_of_inversions = getInversionCount(nums, n);
+// 	cout<<"Total no. of inversion = "<<count_of_inversions<<endl;
+
+// 	return 0;
+// }
+
+
+
+// 2. optimal ? O(N*log(N)) : O(N)
 #include<iostream>
 #include<vector>
 using namespace std;
@@ -15,7 +62,6 @@ int merge(vector<int>& arr, vector<int>& temp, int start, int mid, int end){
     int i = start;
     int j = mid;
     int k = start;
-    
     while((i <= mid-1) && (j <= end)){
         if(arr[i] <= arr[j]){
             temp[k++] = arr[i++];
