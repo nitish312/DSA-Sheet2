@@ -1,4 +1,3 @@
-// 1. brute ? O(max(l1, l2)) : O(max(l1, l2))
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -33,9 +32,10 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
+// only approach ? O(max(l1, l2)) : O(N)
 ListNode* addTwoNumbers(ListNode* l1, ListNode* l2){
 
-	ListNode* dummy = new ListNode(0);
+	ListNode* dummy = new ListNode(-1);
 	ListNode* temp = dummy;
 	int carry = 0;
 
@@ -56,11 +56,9 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2){
 
 		sum += carry;
 		carry = sum / 10;
-		int rem = sum % 10;
 
-		ListNode* newNode = new ListNode(rem);
+		ListNode* newNode = new ListNode(sum % 10);
 		temp->next = newNode;
-
 		temp = temp->next;
 	}
 

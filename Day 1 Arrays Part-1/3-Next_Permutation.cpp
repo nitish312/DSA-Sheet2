@@ -1,4 +1,4 @@
-// inbuilt ? O(N^2) : O(1)
+// 1. inbuilt ? O(N^2) : O(1)
 #include<iostream>
 #include<algorithm>
 using namespace std;
@@ -22,7 +22,7 @@ int main(){
 
 
 
-// inbuilt ? O(3*O(N)) -> O(N) : O(1)
+// 2. optimal ? O(3*O(N)) -> O(N) : O(1)
 #include<iostream>
 #include<vector>
 #include<algorithm>

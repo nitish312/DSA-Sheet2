@@ -1,4 +1,3 @@
-// 1. brute ? O(N) + O(N) -> O(2N) : O(1)
 #include<iostream>
 using namespace std;
 
@@ -32,106 +31,54 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
-int getLength(ListNode* head){
+// // 1. brute ? O(N) + O(N) -> O(2N) : O(1)
+// int getLength(ListNode* head){
 
-	ListNode* temp = head;
+// 	ListNode* temp = head;
 
-	int count = 0;
+// 	int count = 0;
 
-	while(temp){
+// 	while(temp){
 
-		count++;
-		temp = temp->next;
-	}
+// 		count++;
+// 		temp = temp->next;
+// 	}
 
-	return count;
-}
+// 	return count;
+// }
 
-ListNode* removeNthFromEnd(ListNode* head, int n){
+// ListNode* removeNthFromEnd(ListNode* head, int n){
 
-	int len = getLength(head);
+// 	int len = getLength(head);
 
-	int ind = len - n;
-	cout<<ind<<endl;
+// 	int ind = len - n;
+// 	// cout<<ind<<endl;
 
-	if(len == n){
+// 	if(len == n){
 
-		ListNode* delNode = head;
-		head = head->next;
-		delete(delNode);
-		return head;
-	}
+// 		ListNode* delNode = head;
+// 		head = head->next;
+// 		delete(delNode);
+// 		return head;
+// 	}
 
-	ListNode* temp = head;
-	while(--ind){ // pre-decrement 
-// eg. len(5) - n(2) = ind(3) 
-// so 3 times temp->next only & then delete next one 
+// 	ListNode* temp = head;
+// 	while(--ind){ // pre-decrement 
+// // eg. len(5) - n(2) = ind(3) 
+// // so 3 times temp->next only & then delete next one 
 
-		temp = temp->next;
-	}
+// 		temp = temp->next;
+// 	}
 
-	ListNode* delNode = temp->next;
-	temp->next = delNode->next;
-	delete(delNode);
+// 	ListNode* delNode = temp->next;
+// 	temp->next = delNode->next;
+// 	delete(delNode);
 
-	return head;
-}
-
-int main(){
-
-	ListNode* head = new ListNode(10);
-	ListNode* tail = head;
-
-	insertAtEnd(tail, 20);
-	insertAtEnd(tail, 30);
-	insertAtEnd(tail, 40);
-	insertAtEnd(tail, 50);
-
-	printLL(head);
-
-	ListNode* removed = removeNthFromEnd(head, 5);
-
-	printLL(removed);
-
-	return 0;
-}
-
+// 	return head;
+// }
 
 
 // 2. Two-pointer - In one pass ? O(N) : O(1)
-#include<iostream>
-using namespace std;
-
-struct ListNode{
-
-	int data;
-	ListNode* next;
-
-	ListNode(int val){
-
-		data = val;
-		next = NULL;
-	}
-};
-
-void printLL(ListNode* head){
-
-	ListNode* temp = head;
-	while(temp){
-
-		cout<<temp->data<<" —> ";
-		temp = temp->next;
-	}
-	cout<<"NULL"<<endl;
-}
-
-void insertAtEnd(ListNode* &tail, int data){
-
-	ListNode* newNode = new ListNode(data);
-	tail->next = newNode;
-	tail = newNode;
-}
-
 ListNode* removeNthFromEnd(ListNode* head, int n){
 
 	ListNode* dummy = new ListNode(0);
@@ -178,7 +125,7 @@ int main(){
 
 	printLL(head);
 
-	ListNode* removed = removeNthFromEnd(head, 5);
+	ListNode* removed = removeNthFromEnd(head, 2);
 
 	printLL(removed);
 

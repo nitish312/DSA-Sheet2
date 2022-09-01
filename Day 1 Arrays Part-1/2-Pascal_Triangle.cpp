@@ -5,22 +5,22 @@ using namespace std;
 
 vector<vector<int>> generate(int numRows) {
         
-        vector<vector<int>> mainVec;
+    vector<vector<int>> mainVec;
+    
+    for(int i=0; i<numRows; i++){
         
-        for(int i=0; i<numRows; i++){
+        vector<int> vec(i+1, 1); 
+        
+        for(int j=1; j<i; j++){ 
             
-            vector<int> vec(i+1, 1); 
-            
-            for(int j=1; j<i; j++){ 
-                
-                vec[j] = mainVec[i-1][j-1] + mainVec[i-1][j]; 
-            }
-            
-            mainVec.push_back(vec);
+            vec[j] = mainVec[i-1][j-1] + mainVec[i-1][j]; 
         }
         
-        return mainVec;
+        mainVec.push_back(vec);
     }
+    
+    return mainVec;
+}
 
 void printMatrix(vector<vector<int>> matrix){
 
@@ -58,7 +58,7 @@ using namespace std;
 
 vector<vector<int>> generate(int numRows) {
         
-    vector<vector<int>> vec;
+    vector<vector<int>> vec(numRows);
         
     for(int i=0; i<numRows; i++){
             
@@ -67,7 +67,7 @@ vector<vector<int>> generate(int numRows) {
 
 		for(int j=1; j<i; j++){ 
 		                
-			vec[j] = vec[i-1][j-1] + vec[i-1][j]; 
+			vec[i][j] = vec[i-1][j-1] + vec[i-1][j]; 
 		}
 	}
         

@@ -1,4 +1,3 @@
-// 1. swap values ? O(1) : O(1)
 // you will be given access to the node to be deleted directly. 
 // It is guaranteed that the node to be deleted is not a tail node in the list
 #include<iostream>
@@ -35,6 +34,7 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
+// swap values ? O(1) : O(1)
 void deleteThisNode(ListNode* node){
 
 	swap(node->data, node->next->data);

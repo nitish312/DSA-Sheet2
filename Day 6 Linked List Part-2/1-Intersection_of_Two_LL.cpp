@@ -45,9 +45,26 @@ int getLength(ListNode* head){
 	return count;
 }
 
-// traversing entire 2nd list to compare with each element in 1st list 
-
 // // 1. brute ? O(N*M) -> O(N^2) : O(1)
+// ListNode* getIntersectionNode(ListNode* headA, ListNode* headB){
+        	
+//     ListNode* temp1 = headA; 
+//     while(temp1){
+
+//         ListNode* temp2 = headB;
+
+//         while(temp2){
+
+//             if(temp2 == temp1) return temp1;
+
+//             temp2 = temp2->next;
+//         }
+        
+//         temp1 = temp1->next;
+//     }
+
+//     return NULL;
+// }
 
 
 
@@ -104,8 +121,8 @@ int getLength(ListNode* head){
 
 
 
-// // 4. Two-pointer ? O(N) + O(M) -> O(N+M) : O(1)
-ListNode* getIntersectionNode(ListNode *headA, ListNode *headB) {
+// // 4. Two-pointer ? O(2*max(N1,N2)) -> O(max(N1,N2)) : O(1)
+ListNode* getIntersectionNode(ListNode *headA, ListNode *headB){
         
     ListNode* temp1 = headA;
     ListNode* temp2 = headB;
