@@ -44,7 +44,7 @@
 
 
 
-// // 1. in-place ? O(N+M) : O(1)
+// // 2. in-place ? O(N+M) : O(1)
 // #include<iostream>
 // #include<vector>
 // #include<algorithm>

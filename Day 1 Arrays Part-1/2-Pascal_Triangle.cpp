@@ -1,61 +1,30 @@
-// brute ? O(N*M) : O(N^2)
 #include<iostream>
 #include<vector>
 using namespace std;
 
-vector<vector<int>> generate(int numRows) {
+// // 1. brute ? O(N*M) : O(N^2)
+// vector<vector<int>> generate(int numRows) {
         
-    vector<vector<int>> mainVec;
+//     vector<vector<int>> mainVec;
     
-    for(int i=0; i<numRows; i++){
+//     for(int i=0; i<numRows; i++){
         
-        vector<int> vec(i+1, 1); 
+//         vector<int> vec(i+1, 1); 
         
-        for(int j=1; j<i; j++){ 
+//         for(int j=1; j<i; j++){ 
             
-            vec[j] = mainVec[i-1][j-1] + mainVec[i-1][j]; 
-        }
+//             vec[j] = mainVec[i-1][j-1] + mainVec[i-1][j]; 
+//         }
         
-        mainVec.push_back(vec);
-    }
+//         mainVec.push_back(vec);
+//     }
     
-    return mainVec;
-}
-
-void printMatrix(vector<vector<int>> matrix){
-
-	int n = matrix.size();
-	int m = matrix[0].size();
-
-	for(int i=0; i<n; i++){
-
-		for(int j=0; j<m; j++){
-
-			cout<<matrix[i][j]<<" ";
-		}
-		cout<<endl;
-	}
-	cout<<endl;
-}
-
-int main(){
-
-	int n = 5;
-
-	vector<vector<int>> ans = generate(n);
-	
-	printMatrix(ans);
-
-	return 0;
-}
+//     return mainVec;
+// }
 
 
 
-// optimal ? O(N*M) : O(N)
-#include<iostream>
-#include<vector>
-using namespace std;
-
+// 2. by resize() ? O(N*M) : O(N^2)
 vector<vector<int>> generate(int numRows) {
         
     vector<vector<int>> vec(numRows);

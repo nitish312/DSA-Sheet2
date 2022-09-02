@@ -1,4 +1,3 @@
-// 1. brute ? O(N^3) : O(1)
 #include<iostream>
 #include<vector>
 #include<climits>
@@ -10,6 +9,7 @@ void printVec(vector<int> nums){
 	cout<<endl;
 }
 
+// 1. brute ? O(N^3) : O(1)
 int maxSumSubArray(vector<int> nums){
 
 	int n = nums.size();
@@ -33,31 +33,9 @@ int maxSumSubArray(vector<int> nums){
 	return maxSum;
 }
 
-int main(){
-
-	vector<int> nums = {2, 3, -5, 4};
-
-	printVec(nums);
-
-	cout<<maxSumSubArray(nums);
-
-	return 0;
-}
-
 
 
 // 2. better ? O(N^2) : O(1)
-#include<iostream>
-#include<vector>
-#include<climits>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto i: nums) cout<<i<<" ";
-	cout<<endl;
-}
-
 int maxSumSubArray(vector<int> nums, pair<int, int>& indices){
 
 	int n = nums.size();
@@ -83,34 +61,9 @@ int maxSumSubArray(vector<int> nums, pair<int, int>& indices){
 	return maxSum;
 }
 
-int main(){
-
-	vector<int> nums = {2, 3, -5, 4};
-
-	printVec(nums);
-
-	pair<int, int> indices;
-	cout<<maxSumSubArray(nums, indices);
-
-	for(int i=indices.first; i<=indices.second; i++) cout<<nums[i]<<" ";
-
-	return 0;
-}
-
 
 
 // 3. kadane's algo ? O(N) : O(1)
-#include<iostream>
-#include<vector>
-#include<climits>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto i: nums) cout<<i<<" ";
-	cout<<endl;
-}
-
 int maxSumSubArray(vector<int> nums){
 
 	int n = nums.size();

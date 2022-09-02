@@ -1,4 +1,3 @@
-// 1. brute ? O(N) * O(N) -> O(N^2) : O(1)
 #include<iostream>
 #include<vector>
 #include<climits>
@@ -10,6 +9,7 @@ void printVec(vector<int> nums){
 	cout<<endl;
 }
 
+// 1. brute ? O(N) * O(N) -> O(N^2) : O(1)
 int buyNsellStocks(vector<int>& prices){
 
 	int n = prices.size();
@@ -29,31 +29,9 @@ int buyNsellStocks(vector<int>& prices){
 	return profit;
 }
 
-int main(){
-
-	vector<int> prices = {7,1,5,3,6,4};
-
-	printVec(prices);
-
-	int maxProfit = buyNsellStocks(prices);
-	cout<<maxProfit;
-
-	return 0;
-}
 
 
 // 2. optimal ? O(N) : O(1)
-#include<iostream>
-#include<vector>
-#include<climits>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto i: nums) cout<<i<<" ";
-	cout<<endl;
-}
-
 int buyNsellStocks(vector<int>& prices){
 
 	int n = prices.size();

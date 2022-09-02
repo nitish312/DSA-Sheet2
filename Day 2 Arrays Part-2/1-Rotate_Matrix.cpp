@@ -1,4 +1,3 @@
-// optimal ? O(N^2) : O(1) in-place
 #include<iostream>
 #include<vector>
 #include<algorithm>
@@ -20,6 +19,33 @@ void printMatrix(vector<vector<int>> matrix){
 	cout<<endl;
 }
 
+// 1. brute ? O(N^2) : O(N^2)
+void rotateMatrix(vector<vector<int>>& matrix){
+
+    int n = matrix.size();
+
+    vector<vector<int>> rotated(n, vector<int> (n, 0));
+
+    for(int i=0; i<n; i++){
+
+        for(int j=0; j<n; j++){
+
+            rotated[j][n-1-i] = matrix[i][j];
+        }
+    }
+
+    for(int i=0; i<n; i++){
+
+        for(int j=0; j<n; j++){
+
+            matrix[i][j] = rotated[i][j];
+        }
+    }
+}
+
+
+
+// optimal ? O(N^2) : O(1) in-place
 void swapThem(vector<vector<int>>& matrix, int a, int b){
 
 	int temp = matrix[a][b];

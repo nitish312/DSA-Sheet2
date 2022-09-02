@@ -35,6 +35,7 @@ void insertAtEnd(ListNode* &tail, int data){
 // 1. extra space ? O(N) + O(N/2) -> O(N) : O(N)
 bool isPalindrome(ListNode* head){
         
+    // can be vector or string
     vector<int> nums;
     
     ListNode* temp = head;

@@ -1,4 +1,3 @@
-// 1. inbuilt ? O(N*logN) : O(1)
 #include<iostream>
 #include<vector>
 #include<algorithm>
@@ -10,38 +9,15 @@ void printVec(vector<int> nums){
 	cout<<endl;
 }
 
+// 1. inbuilt ? O(N*logN) : O(1)
 void sortZeroOneTwo(vector<int>& nums){
 
 	sort(nums.begin(), nums.end());
 }
 
-int main(){
-
-	vector<int> nums = {2,0,2,1,1,0};
-
-	printVec(nums);
-
-	sortZeroOneTwo(nums);
-
-	printVec(nums);
-
-	return 0;
-}
-
 
 
 // 2. better ? O(N) + O(N) -> O(N) : O(1)
-#include<iostream>
-#include<vector>
-#include<algorithm>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto i: nums) cout<<i<<" ";
-	cout<<endl;
-}
-
 void sortZeroOneTwo(vector<int>& nums){
 
 	int zeroCount = 0, oneCount = 0, twoCount = 0;
@@ -59,54 +35,18 @@ void sortZeroOneTwo(vector<int>& nums){
 	while(twoCount--) nums[i++] = 2;
 }
 
-int main(){
-
-	vector<int> nums = {2,0,2,1,1,0};
-
-	printVec(nums);
-
-	sortZeroOneTwo(nums);
-
-	printVec(nums);
-
-	return 0;
-}
-
 
 
 // 3. Three-pointer ? O(N) : O(1)
-#include<iostream>
-#include<vector>
-#include<algorithm>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto i: nums) cout<<i<<" ";
-	cout<<endl;
-}
-
 void sortZeroOneTwo(vector<int>& nums){
 
 	int n = nums.size();
 	int start = 0, curr = 0, end = n-1;
 	while(curr <= end){
 
-		if(nums[curr] == 0){
-
-			swap(nums[start], nums[curr]);
-			start++;
-			curr++;
-		}
-		else if(nums[curr] == 1){
-
-			curr++;
-		}
-		else{
-
-			swap(nums[curr], nums[end]);
-			end--;
-		}
+		if(nums[curr] == 0) swap(nums[start++], nums[curr++]);
+		else if(nums[curr] == 1) curr++;
+		else if(nums[curr] == 2) swap(nums[curr], nums[end--]);
 	}
 }
 

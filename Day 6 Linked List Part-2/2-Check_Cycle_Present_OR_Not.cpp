@@ -32,7 +32,7 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
-// * if there is null, there is no cycle
+// *Imp_Point -> if there is null, there is no cycle
 
 // // 1. HashSet ? O(N) : O(N)
 // bool hasCycle(ListNode *head){
