@@ -24,6 +24,8 @@ int removeDuplicates(vector<int>& nums){
         nums[j++] = i;
     }
 
+    // return j;
+
     printVec(nums);
     
     return n;
