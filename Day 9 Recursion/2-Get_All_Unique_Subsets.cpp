@@ -6,6 +6,7 @@
 using namespace std;
 
 
+// doesn't work
 // O(2^N) for generating every subset and O(K) to insert every subset in another data structure
 // 1. brute - HashSet ? O(2^N * (2^N*(log2^N)) * K) : O(2^N*K) + O(2*N*K)
 void helper(int ind, vector < int > & nums, vector < int > temp, set < vector < int >> & st) {
