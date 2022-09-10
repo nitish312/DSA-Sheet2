@@ -56,8 +56,6 @@ void nQueen(vector<string> &board, int col, vector<vector<string>>& ans){
 
 vector<vector<string>> solveNQueens(int n){
     
-    if(n < 1) return {{}};
-    
     vector<vector<string>> ans;
     
     vector<string> board(n, string(n, 'x'));

@@ -1,4 +1,3 @@
-
 #include<iostream>
 using namespace std;
 
@@ -19,79 +18,46 @@ void printLL(ListNode* head){
 	ListNode* temp = head;
 	while(temp){
 
-		cout<<temp->data<<" —> ";
+		cout<<temp->data<<" ";
 		temp = temp->next;
 	}
 	cout<<"NULL"<<endl;
 }
 
-void insertAtEnd(ListNode* &tail, int data){
+void insertAtEnd(ListNode* &tail, int val){
 
-	ListNode* newNode = new ListNode(data);
+	ListNode* newNode = new ListNode(val);
 	tail->next = newNode;
 	tail = newNode;
 }
 
-// 1. create new nodes ? O(N1+N2) : O(N1+N2)
-ListNode* mergeTwoLists(ListNode* list1, ListNode* list2){
-
-	if(!list1) return list2;
-	if(!list2) return list1;
-
-	ListNode* dummy = new ListNode(0);
-
-	ListNode* temp = dummy;
-	
-	while(list1 && list2){
-
-		if(list1->data < list2->data){
-
-			ListNode* newNode = new ListNode(list1->data);
-
-			temp->next = newNode;
-			list1 = list1->next;
-		}
-		else{
-
-			ListNode* newNode = new ListNode(list2->data);
-
-			temp->next = newNode;
-			list2 = list2->next;
-		}
-
-		temp = temp->next;
+ListNode* middleNode(ListNode* head)
+{
+	ListNode *slow = head, *fast = head;
+	while(fast && fast->next)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-
-	if(list1) temp->next = list1;
-	if(list2) temp->next = list2;
-
-	temp = dummy->next;
-	delete dummy;
-
-	return temp;
+	return slow;
 }
 
 int main(){
 
-	ListNode* head1 = new ListNode(1);
-	ListNode* tail1 = head1;
+	ListNode* head = new ListNode(10);
+	ListNode* tail = head;
 
-	insertAtEnd(tail1, 2);
-	insertAtEnd(tail1, 4);
+	insertAtEnd(tail, 20);
+	insertAtEnd(tail, 30);
+	insertAtEnd(tail, 40);
+	insertAtEnd(tail, 50);
+	insertAtEnd(tail, 60);
 
-	printLL(head1);
+	printLL(head);
 
-	ListNode* head2 = new ListNode(1);
-	ListNode* tail2 = head2;
+	ListNode* midd = middleNode(head);
 
-	insertAtEnd(tail2, 3);
-	insertAtEnd(tail2, 4);
-
-	printLL(head2);
-
-	ListNode* merged = mergeTwoLists(head1, head2);
-
-	printLL(merged);
+	cout<<"Middle Node = "<<midd->data<<endl;
 
 	return 0;
 }
