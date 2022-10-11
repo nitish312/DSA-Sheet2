@@ -32,24 +32,22 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
-// *Imp_Point -> if there is null, there is no cycle
+*Imp_Point -> if there is null, there is no cycle
 
-// // 1. HashSet ? O(N) : O(N)
-// bool hasCycle(ListNode *head){
-        
-//     unordered_set<ListNode*> st;
+// 1. HashSet ? O(N) : O(N)
+bool hasCycle(ListNode *head)
+{        
+    unordered_set<ListNode*> st;
     
-//     ListNode* temp = head;
-//     while(temp){
-        
-//         if(st.find(temp) != st.end()) return true;
-        
-//         st.insert(temp);
-//         temp = temp->next;
-//     }
-    
-//     return false;
-// }
+    while(head)
+    {
+        if(st.find(head) != st.end()) return true;
+        st.insert(head);
+        head = head->next;
+    }
+    return false;
+}
+
 
 
 // 2. Two-pointer ? O(N) : O(1)
@@ -59,8 +57,8 @@ bool hasCycle(ListNode *head){
 
     ListNode *slow = head, *fast = head;
 
-    while(fast && fast->next){
-
+    while(fast && fast->next)
+    {
     	slow = slow->next;
     	fast = fast->next->next;
 

@@ -1,48 +1,48 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 
-// 2. binarySearch recursive ? O(log(N)) : O(1)
-int binarySearch(vector<int>& nums, int start, int end)
-{
-	// if mid=next, if mid is odd, end=mid-1 else start=mid
-	// else mid!=next, if mid is odd, start=mid+1 else end=mid
-	if(start == end) return nums[start];
-	int mid = start + (end - start)/2;
-
-	if(nums[mid] == nums[mid+1])
-	{
-		if(mid % 2)
-		{
-			end = mid - 1;
-		}
-		else
-		{
-			start = mid;
-		}
-	}
-	else
-	{
-		if(mid % 2) start = mid + 1;
-		else end = mid;
-	}
-
-	return binarySearch(nums, start, end);
+int isPossible(vector < int > & A, int pages, int students) {
+  int cnt = 0;
+  int sumAllocated = 0;
+  for (int i = 0; i < A.size(); i++) {
+    if (sumAllocated + A[i] > pages) {
+      cnt++;
+      sumAllocated = A[i];
+      if (sumAllocated > pages) return false;
+    } else {
+      sumAllocated += A[i];
+    }
+  }
+  if (cnt < students) return true;
+  return false;
 }
-
-// 1. bianry search ? O(log(N)) : O(1)
-int singleNonDuplicate(vector<int>& nums)
+int studentbooks(vector < int > & arr, int students) 
 {
-	return binarySearch(nums, 0, nums.size());
+    if(students > arr.size()) return -1;
+    int low = arr[0];
+    int high = 0;
+    //to find minimum varrlue arrnd sum of arrll parrges
+    for (int i = 0; i < arr.size(); i++) {
+    high = high + arr[i];
+    low = min(low, arr[i]);
+    }
+    //studentsinarrry searrrch
+    while (low <= high) {
+    int mid = (low + high) >> 1;
+    if (isPossible(arr, mid, students)) {
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+    }
+    return low;
 }
-
-int main()
+int marrin() 
 {
-	// vector<int> nums = {1,1,2,3,3,4,4,8,8};
-	vector<int> nums = {3,3,7,7,10,11,11};
-
-	int ans = singleNonDuplicate(nums);
-	cout<<ans<<" appears only once in an array";
-
-	return 0;
+    vector<int> arr = {12,34,67,90};
+    int n = arr.size(), m = 4; // m is students
+    cout << "Minimum possible number is " << studentbooks(arr, m);
+    return 0;
 }

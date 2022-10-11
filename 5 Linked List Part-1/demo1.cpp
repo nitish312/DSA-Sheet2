@@ -1,63 +1,60 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
-struct ListNode{
-
-	int data;
-	ListNode* next;
-
-	ListNode(int val){
-
-		data = val;
-		next = NULL;
-	}
-};
-
-void printLL(ListNode* head){
-
-	ListNode* temp = head;
-	while(temp){
-
-		cout<<temp->data<<" ";
-		temp = temp->next;
-	}
-	cout<<"NULL"<<endl;
-}
-
-void insertAtEnd(ListNode* &tail, int val){
-
-	ListNode* newNode = new ListNode(val);
-	tail->next = newNode;
-	tail = newNode;
-}
-
-ListNode* middleNode(ListNode* head)
+void solve(vector<int>& vec, vector<vector<int>>& all)
 {
-	ListNode *slow = head, *fast = head;
-	while(fast && fast->next)
-	{
-		slow = slow->next;
-		fast = fast->next->next;
-	}
-	return slow;
+    int n = vec.size();
+    for(int i=0; i<n; i++)
+    {
+        vector<int> subArr;
+        for(int j=i; j<n; j++)
+        {
+            subArr.push_back(vec[j]);
+            all.push_back(subArr);
+        }
+    }
 }
 
-int main(){
+bool sumZero(vector<int> vec)
+{
+    int sum = accumulate(vec.begin(), vec.end(), 0);
+    return (sum == 0);
+}
 
-	ListNode* head = new ListNode(10);
-	ListNode* tail = head;
+int main()
+{
+    vector<int> vec = {6,-1,-3,4,-2,2,4,6,-12,-7};
 
-	insertAtEnd(tail, 20);
-	insertAtEnd(tail, 30);
-	insertAtEnd(tail, 40);
-	insertAtEnd(tail, 50);
-	insertAtEnd(tail, 60);
+    vector<vector<int>> all;
+    solve(vec, all);
 
-	printLL(head);
+    int ans = 0;
 
-	ListNode* midd = middleNode(head);
+    for(auto i: all)
+        if(sumZero(i)) 
+        {
+            ans++;
+            for(auto j: i)
+            {
+                cout<<j<<" ";
+            }
+            cout<<endl;
+        }
 
-	cout<<"Middle Node = "<<midd->data<<endl;
+    cout<<"Count of subarray with sum 0 = "<<ans<<endl;
 
-	return 0;
+    int count = 0;
+    for(int i=0; i<vec.size(); i++)
+    {
+        int currSum = 0;
+        for(int j=i; j<vec.size(); j++)
+        {
+            currSum += vec[j];
+            if(currSum == 0) count++;
+        }
+    }
+
+    cout<<"Count of subarray with sum 0 = "<<count<<endl;
+
+    return 0;
 }

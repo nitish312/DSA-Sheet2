@@ -15,8 +15,8 @@ void subsetSumHelper(int ind, vector<int>& nums, int n, vector<int>& ans, int su
     // not picked
     subsetSumHelper(ind+1, nums, n, ans, sum); 
 
-    sum += nums[ind]; // picked
-    subsetSumHelper(ind+1, nums, n, ans, sum);
+    // picked
+    subsetSumHelper(ind+1, nums, n, ans, sum + nums[ind]);
 }
 
 vector<int> subsetSum(vector<int>& nums, int n){

@@ -4,11 +4,11 @@
 using namespace std;
 
 // 1. brute ? O(N! * N) -> generating N! permutations : O(N) 
-void allPermutations(vector<int>& nums, vector<int>& freq, vector<int>& temp, vector<vector<int>>& ans){
+void allPermutations(vector<int>& nums, vector<int>& freq, vector<int>& ds, vector<vector<int>>& ans){
         
-    if(temp.size() == nums.size()){
+    if(ds.size() == nums.size()){
         
-        ans.push_back(temp);
+        ans.push_back(ds);
         return;
     }
     
@@ -16,11 +16,11 @@ void allPermutations(vector<int>& nums, vector<int>& freq, vector<int>& temp, ve
         
         if(!freq[i]){
 
-            temp.push_back(nums[i]);
+            ds.push_back(nums[i]);
             freq[i] = 1;
-            allPermutations(nums, freq, temp, ans);
+            allPermutations(nums, freq, ds, ans);
             freq[i] = 0;
-            temp.pop_back();
+            ds.pop_back();
         }
     }
 }
@@ -28,10 +28,10 @@ void allPermutations(vector<int>& nums, vector<int>& freq, vector<int>& temp, ve
 vector<vector<int>> permute(vector<int>& nums) {
     
     vector<vector<int>> ans;
-    vector<int> temp;
+    vector<int> ds;
     vector<int> freq(nums.size());
 
-    allPermutations(nums, freq, temp, ans);
+    allPermutations(nums, freq, ds, ans);
     
     return ans;
 }
@@ -39,19 +39,19 @@ vector<vector<int>> permute(vector<int>& nums) {
 
 
 // 2. optimal ? O(N! * N) -> generating N! permutations : O(1) 
-void allPermutations(int ind, vector<int>& nums, vector<vector<int>>& ans){
+void allPermutations(int i, vector<int>& nums, vector<vector<int>>& ans){
         
-    if(ind == nums.size()){
+    if(i == nums.size()){
         
         ans.push_back(nums);
         return;
     }
     
-    for(int i=ind; i<nums.size(); i++){
+    for(int j=i; j<nums.size(); j++){
         
-        swap(nums[i], nums[ind]);
-        allPermutations(ind+1, nums, ans);
-        swap(nums[i], nums[ind]);
+        swap(nums[i], nums[j]);
+        allPermutations(i+1, nums, ans);
+        swap(nums[i], nums[j]);
     }
 }
 

@@ -32,38 +32,38 @@ void insertAtEnd(ListNode* &tail, int value){
 }
 
 
-// // 1. Iterative ? O(N) : O(1)
-// ListNode* reverseLL(ListNode* head){
+// 1. Iterative ? O(N) : O(1)
+ListNode* reverseLL(ListNode* head){
 
-// 	ListNode *prePtr, *nxtPtr;
-// 	prePtr = nxtPtr = NULL;
+	ListNode *prePtr, *nxtPtr;
+	prePtr = nxtPtr = NULL;
 
-// 	while(head){
+	while(head){
 
-// 		nxtPtr = head->next;
-// 		head->next = prePtr;
-// 		prePtr = head;
-// 		head = nxtPtr;
-// 	}
+		nxtPtr = head->next;
+		head->next = prePtr;
+		prePtr = head;
+		head = nxtPtr;
+	}
 
-// 	return prePtr;
-// }
+	return prePtr;
+}
 
 
 // 2. Recursive ? O(N) : O(1)
 ListNode* reverseLL(ListNode* head){
 
 	if(!head || !head->next) return head;
-
-	ListNode* newNode = reverseLL(head->next);
-
-	ListNode* headNext = head->next;
-
-	headNext->next = head;
-
-	head->next = NULL;
-
-	return newNode;
+        
+    ListNode *revHead = reverseList(head->next);
+    
+    ListNode *lastNode = head->next;
+    
+    lastNode->next = head;
+    
+    head->next = NULL;
+    
+    return revHead;
 }
 
 int main(){

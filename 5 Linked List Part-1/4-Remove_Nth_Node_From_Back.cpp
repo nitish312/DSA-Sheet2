@@ -31,51 +31,47 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
-// // 1. brute ? O(N) + O(N) -> O(2N) : O(1)
-// int getLength(ListNode* head){
+// 1. brute ? O(N) + O(N) -> O(2N) : O(1)
+int getLength(ListNode* head)
+{
+	int count = 0;
+	while(head)
+	{
+		count++;
+		head = head->next;
+	}
+	return count;
+}
 
-// 	ListNode* temp = head;
+ListNode* removeNthFromEnd(ListNode* head, int n){
 
-// 	int count = 0;
+	int len = getLength(head);
 
-// 	while(temp){
+	int ind = len - n;
+	// cout<<ind<<endl;
 
-// 		count++;
-// 		temp = temp->next;
-// 	}
+	if(len == n){ // to delete head
 
-// 	return count;
-// }
+		ListNode* delNode = head;
+		head = head->next;
+		delete(delNode);
+		return head;
+	}
 
-// ListNode* removeNthFromEnd(ListNode* head, int n){
+	ListNode* temp = head;
+	while(--ind){ // pre-decrement 
+// eg. len(5) - n(2) = ind(3) 
+// so 3 times temp->next only & then delete next one 
 
-// 	int len = getLength(head);
+		temp = temp->next;
+	}
 
-// 	int ind = len - n;
-// 	// cout<<ind<<endl;
+	ListNode* delNode = temp->next;
+	temp->next = delNode->next;
+	delete(delNode);
 
-// 	if(len == n){
-
-// 		ListNode* delNode = head;
-// 		head = head->next;
-// 		delete(delNode);
-// 		return head;
-// 	}
-
-// 	ListNode* temp = head;
-// 	while(--ind){ // pre-decrement 
-// // eg. len(5) - n(2) = ind(3) 
-// // so 3 times temp->next only & then delete next one 
-
-// 		temp = temp->next;
-// 	}
-
-// 	ListNode* delNode = temp->next;
-// 	temp->next = delNode->next;
-// 	delete(delNode);
-
-// 	return head;
-// }
+	return head;
+}
 
 
 // 2. Two-pointer - In one pass ? O(N) : O(1)

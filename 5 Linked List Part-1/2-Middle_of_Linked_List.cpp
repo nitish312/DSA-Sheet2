@@ -32,34 +32,34 @@ void insertAtEnd(ListNode* &tail, int val){
 	tail = newNode;
 }
 
-// // 1. brute ? O(N) + O(N/2) -> O(N) : O(1)
-// int getLength(ListNode* head){
+// 1. brute ? O(N) + O(N/2) -> O(N) : O(1)
+int getLength(ListNode* head){
 
-// 	ListNode* temp = head;
-// 	int count = 0;
+	ListNode* temp = head;
+	int count = 0;
 
-// 	while(temp){
+	while(temp){
 
-// 		count++;
-// 		temp = temp->next;
-// 	}
+		count++;
+		temp = temp->next;
+	}
 
-// 	return count;
-// }
+	return count;
+}
 
-// ListNode* middleNode(ListNode* head) {
+ListNode* middleNode(ListNode* head) {
 
-// 	int len = getLength(head); // O(N)
-// 	len /= 2;
+	int len = getLength(head); // O(N)
+	len /= 2;
 
-// 	ListNode* temp = head;
-// 	while(len--){ // O(N/2)
+	ListNode* temp = head;
+	while(len--){ // O(N/2)
 
-// 		temp = temp->next;
-// 	}
+		temp = temp->next;
+	}
 
-// 	return temp;
-// }
+	return temp;
+}
 
 
 // 2. Two-pointer ? O(N/2) : O(1)

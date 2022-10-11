@@ -53,11 +53,11 @@ void helper(int ind, vector<int>& nums, vector<int>& subset, vector<vector<int>>
     else{
 
         helper(ind + 1, nums, subset, ans, false); // ith elem not picked
+
         if(ind > 0 && nums[ind] == nums[ind-1] && !prev) return;
 
         subset.push_back(nums[ind]); // ith elem picked
         helper(ind + 1, nums, subset, ans, true);
-
         subset.pop_back(); // backtracking
     }
 }

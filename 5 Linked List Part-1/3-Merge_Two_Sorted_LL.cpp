@@ -1,7 +1,3 @@
-
-
-
-
 #include<iostream>
 using namespace std;
 
@@ -35,7 +31,7 @@ void insertAtEnd(ListNode* &tail, int data){
 	tail = newNode;
 }
 
-// 1. create new nodes ? O(N1+N2) : O(N1+N2)
+// 1. create entire new LL ? O(N1+N2) : O(N1+N2)
 ListNode* mergeTwoLists(ListNode* list1, ListNode* list2){
 
 	if(!list1) return list2;
