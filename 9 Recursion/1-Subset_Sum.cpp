@@ -4,19 +4,19 @@
 using namespace std;
 
 // 2. optimal ? O(2^N) + O(2^N(log(2^N))) : O(2^N)
-void subsetSumHelper(int ind, vector<int>& nums, int n, vector<int>& ans, int sum){
+void subsetSumHelper(int i, vector<int>& nums, int n, vector<int>& ans, int sum){
 
-    if(ind == n){
+    if(i == n){
 
         ans.push_back(sum);
         return;
     }
 
     // not picked
-    subsetSumHelper(ind+1, nums, n, ans, sum); 
+    subsetSumHelper(i+1, nums, n, ans, sum); 
 
     // picked
-    subsetSumHelper(ind+1, nums, n, ans, sum + nums[ind]);
+    subsetSumHelper(i+1, nums, n, ans, sum + nums[i]);
 }
 
 vector<int> subsetSum(vector<int>& nums, int n){
@@ -25,7 +25,7 @@ vector<int> subsetSum(vector<int>& nums, int n){
 
     subsetSumHelper(0, nums, n, ans, 0);
 
-    sort(ans.begin(), ans.end());
+    // sort(ans.begin(), ans.end());
 
     return ans;
 }

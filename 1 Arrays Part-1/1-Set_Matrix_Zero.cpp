@@ -2,15 +2,15 @@
 #include<vector>
 using namespace std;
 
-void printMatrix(vector<vector<int>> matrix){
-
+void printMatrix(vector<vector<int>> matrix)
+{
 	int n = matrix.size();
 	int m = matrix[0].size();
 
-	for(int i=0; i<n; i++){
-
-		for(int j=0; j<m; j++){
-
+	for(int i=0; i<n; i++)
+    {
+		for(int j=0; j<m; j++)
+        {
 			cout<<matrix[i][j]<<" ";
 		}
 		cout<<endl;
@@ -19,30 +19,30 @@ void printMatrix(vector<vector<int>> matrix){
 }
 
 // // 1. brute ? O(N*M) + O(N*M) -> O(N*M) : O(N)
-// void setZeroes(vector<vector<int>>& matrix){
-
+// void setZeroes(vector<vector<int>>& matrix)
+// {
 // 	int rows = matrix.size();
 // 	int cols = matrix[0].size();
 
 // 	vector<pair<int, int>> setThem; 
-// 	for(int i=0; i<rows; i++){
-
-// 		for(int j=0; j<cols; j++){
-
-// 			if(matrix[i][j] == 0){
-
+// 	for(int i=0; i<rows; i++)
+//     {
+// 		for(int j=0; j<cols; j++)
+//         {
+// 			if(matrix[i][j] == 0)
+//             {
 // 				setThem.push_back(make_pair(i, j));
 // 				// (0,0) , (0,3)
 // 			}
 // 		}
 // 	}
 
-// 	for(int i=0; i<rows; i++){
-
-// 		for(int j=0; j<cols; j++){
-
-// 			for(auto ele: setThem){
-
+// 	for(int i=0; i<rows; i++)
+//     {
+// 		for(int j=0; j<cols; j++)
+//         {
+// 			for(auto ele: setThem)
+//             {
 // 				matrix[ele.first][j] = 0;
 // 				matrix[i][ele.second] = 0;
 // 			}
@@ -53,19 +53,20 @@ void printMatrix(vector<vector<int>> matrix){
 
 
 // 2. optimal ? O(N*M) + O(N*M) -> O(N*M) : O(1)
-void setZeroes(vector<vector<int>>& matrix){
-
+void setZeroes(vector<vector<int>>& matrix)
+{
 	int n = matrix.size();
     int m = matrix[0].size();
     
     bool firstRow = false;  // do we need to set first row zero
     bool firstCol = false;  // do we need to ser first col zero
     
-    for(int i=0; i<n; i++){
-        
-        for(int j=0; j<m; j++){
-            
-			if(matrix[i][j] == 0){ // store rows and cols state in first row and col
+    for(int i=0; i<n; i++)
+    {    
+        for(int j=0; j<m; j++)
+        {    
+			if(matrix[i][j] == 0) // store rows and cols state in first row and col
+            { 
                 if(i == 0) firstRow = true;
                 if(j == 0) firstCol = true;
                 
@@ -75,11 +76,12 @@ void setZeroes(vector<vector<int>>& matrix){
         }
     }
     
-    for(int i=1; i<n; i++){
-        
-        for(int j=1; j<m; j++){
-            
-            if(matrix[i][0] == 0 || matrix[0][j] == 0){
+    for(int i=1; i<n; i++)
+    {
+        for(int j=1; j<m; j++)
+        {
+            if(matrix[i][0] == 0 || matrix[0][j] == 0)
+            {
                 matrix[i][j] = 0;
             }
         }

@@ -5,26 +5,23 @@
 using namespace std;
 
 // Recursive ? O(2^N) : O(2^N)
-void helper(int ind, vector<int>& nums, vector<int>& subset, vector<vector<int>>& ans){
-
-    if(ind == nums.size()){
-
+void helper(int i, vector<int>& nums, vector<int>& subset, vector<vector<int>>& ans)
+{
+    if(i == nums.size())
+    {
         ans.push_back(subset);
         return;
     }
-    else{
 
-        helper(ind + 1, nums, subset, ans); // ith elem not picked
+    helper(i+1, nums, subset, ans); // ith elem not picked
 
-        subset.push_back(nums[ind]); // ith elem picked
-        helper(ind + 1, nums, subset, ans);
-
-        subset.pop_back(); // backtracking
-    }
+    subset.push_back(nums[i]); // ith elem picked
+    helper(i+1, nums, subset, ans);
+    subset.pop_back(); // backtracking
 }
 
-vector<vector<int>> subsets2(vector<int>& nums){
-
+vector<vector<int>> subsets2(vector<int>& nums)
+{
     vector<vector<int>> ans;
 
     vector<int> subset;
@@ -37,20 +34,20 @@ vector<vector<int>> subsets2(vector<int>& nums){
 
 
 // Iterative ? O(2^N) : O(2^N)
-vector<vector<int>> subsets(vector<int>& nums){
-
+vector<vector<int>> subsets(vector<int>& nums)
+{
     vector<vector<int>> ans;
 
     int n = nums.size();
 
     ans.push_back({});
 
-    for(int i=0; i<n; i++){
-
+    for(int i=0; i<n; i++)
+    {
         int sz = ans.size();
 
-        for(int j=0; j<sz; j++){
-
+        for(int j=0; j<sz; j++)
+        {
             vector<int> vec = ans[j];
             vec.push_back(nums[i]);
 
