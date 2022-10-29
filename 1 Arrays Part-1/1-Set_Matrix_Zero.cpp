@@ -18,37 +18,37 @@ void printMatrix(vector<vector<int>> matrix)
 	cout<<endl;
 }
 
-// // 1. brute ? O(N*M) + O(N*M) -> O(N*M) : O(N)
-// void setZeroes(vector<vector<int>>& matrix)
-// {
-// 	int rows = matrix.size();
-// 	int cols = matrix[0].size();
+// 1. brute ? O(N*M) + O(N*M) -> O(N*M) : O(N*M)
+void setZeroes(vector<vector<int>>& matrix)
+{
+	int rows = matrix.size();
+	int cols = matrix[0].size();
 
-// 	vector<pair<int, int>> setThem; 
-// 	for(int i=0; i<rows; i++)
-//     {
-// 		for(int j=0; j<cols; j++)
-//         {
-// 			if(matrix[i][j] == 0)
-//             {
-// 				setThem.push_back(make_pair(i, j));
-// 				// (0,0) , (0,3)
-// 			}
-// 		}
-// 	}
+	vector<pair<int, int>> setThem; 
+	for(int i=0; i<rows; i++)
+    {
+		for(int j=0; j<cols; j++)
+        {
+			if(matrix[i][j] == 0)
+            {
+				setThem.push_back(make_pair(i, j));
+				// (0,0) , (0,3)
+			}
+		}
+	}
 
-// 	for(int i=0; i<rows; i++)
-//     {
-// 		for(int j=0; j<cols; j++)
-//         {
-// 			for(auto ele: setThem)
-//             {
-// 				matrix[ele.first][j] = 0;
-// 				matrix[i][ele.second] = 0;
-// 			}
-// 		}
-// 	}
-// }
+	for(int i=0; i<rows; i++)
+    {
+		for(int j=0; j<cols; j++)
+        {
+			for(auto ele: setThem)
+            {
+				matrix[ele.first][j] = 0;
+				matrix[i][ele.second] = 0;
+			}
+		}
+	}
+}
 
 
 
