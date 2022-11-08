@@ -1,15 +1,15 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+void printVec(vector<int> nums){
+
+	for(auto ele: nums) cout<<ele<<" ";
+	cout<<endl;
+}
+
 // // 1. brute ? O(N+M) : O(N+M)
-// #include<iostream>
-// #include<vector>
-// #include<algorithm>
-// using namespace std;
-
-// void printVec(vector<int> nums){
-
-// 	for(auto ele: nums) cout<<ele<<" ";
-// 	cout<<endl;
-// }
-
 // void mergeSortedArrays(vector<int>& nums1, int n1, vector<int>& nums2, int n2){
         
 //     vector<int> ans(n1 + n2);
@@ -24,86 +24,9 @@
 //     printVec(ans);
 // }
 
-// int main(){
-
-// 	vector<int> nums1 = {1, 2, 3};
-// 	vector<int> nums2 = {2, 5, 6};
-
-// 	int n1 = nums1.size();
-// 	int n2 = nums2.size();
-
-// 	printVec(nums1);
-// 	printVec(nums2);
-
-// 	mergeSortedArrays(nums1, n1, nums2, n2);
-
-// 	// printVec(nums1);
-
-// 	return 0;
-// }
-
-
-
-// // 2. in-place ? O(N+M) : O(1)
-// #include<iostream>
-// #include<vector>
-// #include<algorithm>
-// using namespace std;
-
-// void printVec(vector<int> nums){
-
-// 	for(auto ele: nums) cout<<ele<<" ";
-// 	cout<<endl;
-// }
-
-// void mergeSortedArrays(vector<int>& nums1, int n1, vector<int>& nums2, int n2){
-        
-//     int i = n1 - 1;
-//     int j = n2 - 1;
-//     int target = n1 + n2 - 1;
-
-//     int n = n2;
-//     while(n--) nums1.push_back(0);
-
-//     while(j >= 0){
-
-//     	nums1[target--] = ((i >= 0) && nums1[i] > nums2[j])
-//     				      ? nums1[i--] : nums2[j--];
-//     }
-// }
-
-// int main(){
-
-// 	vector<int> nums1 = {2, 5, 6};
-// 	vector<int> nums2 = {1, 2, 3};
-
-// 	int n1 = nums1.size();
-// 	int n2 = nums2.size();
-
-// 	printVec(nums1);
-// 	printVec(nums2);
-
-// 	mergeSortedArrays(nums1, n1, nums2, n2);
-
-// 	printVec(nums1);
-
-// 	return 0;
-// }
-
 
 
 // 2. in-place ? O(N+M) : O(1)
-#include<iostream>
-#include<vector>
-#include<algorithm>
-using namespace std;
-
-void printVec(vector<int> nums){
-
-	for(auto ele: nums) cout<<ele<<" ";
-	cout<<endl;
-}
-
 void mergeSortedArrays(vector<int>& nums1, int n1, vector<int>& nums2, int n2){
         
     int i = n1 - 1;
