@@ -60,7 +60,7 @@ ListNode* removeNthFromEnd(ListNode* head, int n){
 
 	ListNode* temp = head;
 	while(--ind){ // pre-decrement 
-// eg. len(5) - n(2) = ind(3) 
+// eg. if(n == 4 && len == 5), len(5) - n(2) = ind(3) 
 // so 3 times temp->next only & then delete next one 
 
 		temp = temp->next;

@@ -55,7 +55,7 @@ ListNode* reverseLL(ListNode* head){
 
 	if(!head || !head->next) return head;
         
-    ListNode *revHead = reverseList(head->next);
+    ListNode *revHead = reverseLL(head->next);
     
     ListNode *lastNode = head->next;
     

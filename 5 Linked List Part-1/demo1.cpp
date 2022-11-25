@@ -1,60 +1,80 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
-void solve(vector<int>& vec, vector<vector<int>>& all)
-{
-    int n = vec.size();
-    for(int i=0; i<n; i++)
-    {
-        vector<int> subArr;
-        for(int j=i; j<n; j++)
-        {
-            subArr.push_back(vec[j]);
-            all.push_back(subArr);
-        }
+class Node{
+public:
+    int data;
+    Node* next;
+    Node(int val){
+        data = val;
+        next = NULL;
     }
-}
+};
 
-bool sumZero(vector<int> vec)
-{
-    int sum = accumulate(vec.begin(), vec.end(), 0);
-    return (sum == 0);
-}
+class Solution{
+public:
+
+    void insertAtEnd(Node* &tail, int val){
+
+        Node* nod = new Node(val);
+        tail->next = nod;
+        tail = nod;
+    }
+
+    void printLL(Node* head){
+
+        Node* temp = head;
+        while(temp){
+            cout<<temp->data<<" ";
+            temp = temp->next;
+        }
+        cout<<endl;
+    }
+
+    Node* reverseLLIterative(Node* head){
+
+        Node *prev = NULL, *nxtPtr;
+        while(head){
+            nxtPtr = head->next;
+            head->next = prev;
+            prev = head;
+            head = nxtPtr;
+        }
+        return prev;
+    }
+
+    Node* reverseLLRecursive(Node* head){
+
+        if(head == NULL || head->next == NULL) return head;
+
+        Node* newHead = reverseLLRecursive(head->next);
+        Node* lastNode = head->next;
+        lastNode->next = head;
+        head->next = NULL;
+
+        return newHead;
+    }
+};
 
 int main()
 {
-    vector<int> vec = {6,-1,-3,4,-2,2,4,6,-12,-7};
+    Node* head = new Node(10);
+    Node* tail = head;
+    
+    Solution obj;
+    obj.insertAtEnd(tail, 20);
+    obj.insertAtEnd(tail, 30);
+    obj.insertAtEnd(tail, 40);
+    obj.insertAtEnd(tail, 50);
+    obj.printLL(head);
 
-    vector<vector<int>> all;
-    solve(vec, all);
+    Node* rev = obj.reverseLLIterative(head);
+    obj.printLL(rev);
 
-    int ans = 0;
+    head = obj.reverseLLIterative(rev);
 
-    for(auto i: all)
-        if(sumZero(i)) 
-        {
-            ans++;
-            for(auto j: i)
-            {
-                cout<<j<<" ";
-            }
-            cout<<endl;
-        }
-
-    cout<<"Count of subarray with sum 0 = "<<ans<<endl;
-
-    int count = 0;
-    for(int i=0; i<vec.size(); i++)
-    {
-        int currSum = 0;
-        for(int j=i; j<vec.size(); j++)
-        {
-            currSum += vec[j];
-            if(currSum == 0) count++;
-        }
-    }
-
-    cout<<"Count of subarray with sum 0 = "<<count<<endl;
+    Node* rev2 = obj.reverseLLRecursive(head);
+    obj.printLL(rev2);
 
     return 0;
 }
