@@ -1,29 +1,36 @@
-// 1. inbuilt ? O(N^2) : O(1)
-#include<iostream>
-#include<algorithm>
+#include<bits/stdc++.h>
 using namespace std;
 
 int main(){
 
-	int nums[] = {1, 2, 3};
-	int n = sizeof(nums)/sizeof(nums[0]);
+	int t, n;
+	string s;
+	cin >> t;
+	while(t--){
+		cin >> n;
+		cin >> s;
 
-	do{
-		for(int i=0; i<n; i++) 
-			cout<<nums[i]<<" ";
-		cout<<endl;
-	
-	}while(next_permutation(nums, nums + n));
+		string ans = "";
+        ans.push_back(s[0]);
 
-	// for(int i=0; i<n; i++) cout<<nums[i]<<" ";
-	// cout<<endl;
+        for(int i = 1; i < n; i++){
+            if(ans.size() % 2 == 1){
+                if(ans.back() != s[i]){
+                    ans.push_back(s[i]);
+                }
+            }
+            else{
+                ans.push_back(s[i]);
+            }
+        }
 
-	// next_permutation(nums, nums + n);
+        if(ans.size() % 2 == 1) ans.pop_back();
 
-	// for(int i=0; i<n; i++) cout<<nums[i]<<" ";
-	// cout<<endl;
+        int diff = s.size() - ans.size();
 
-	// prev_permutation(arr, arr + n);
+        cout << diff << endl;
+        cout << ans << endl;
+	}
 
 	return 0;
 }
