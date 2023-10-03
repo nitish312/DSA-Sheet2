@@ -11,15 +11,3 @@
 (Q) Merge two sorted Arrays without extra space
 	1. 
 
-
-(Q) Find the duplicate in an array of N+1 integers
-	1. 
-
-
-(Q) Repeat and Missing Number
-	1. 
-
-
-(Q) Inversion of Array (Pre-req: Merge Sort)
-	1. 
-
